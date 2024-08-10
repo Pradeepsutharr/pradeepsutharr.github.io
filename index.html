@@ -1121,7 +1121,7 @@
           <section class="contact-form">
             <h3 class="h3 form-title">Contact Form</h3>
 
-            <form action="#" class="form" data-form>
+            <form action="#" id="contact-form" class="form" data-form>
               <div class="input-wrapper">
                 <input
                   type="text"
@@ -1176,5 +1176,36 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
+<!--     email configuration -->
+    <script
+      type="text/javascript"
+      src="https://cdn.emailjs.com/dist/email.min.js"
+    ></script>
+
+    <script>
+      // Initialize EmailJS with your Public Key
+      (function () {
+        emailjs.init("IUhdJHDC49JOKugxz");
+      })();
+
+      // Add event listener to the form submission
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          // Send form data via EmailJS
+          emailjs.sendForm("service_pw5e40x", "template_zku4s4o", this).then(
+            function () {
+              alert("Your message has been sent successfully!");
+            },
+            function (error) {
+              alert("Failed to send message. Please try again later.");
+              console.log("Failed...", error);
+            }
+          );
+        });
+    </script>
   </body>
 </html>
