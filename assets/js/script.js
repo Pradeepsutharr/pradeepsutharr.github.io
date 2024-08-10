@@ -60,7 +60,7 @@ const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 select.addEventListener("click", function () {
-  elementToggleFunc(this);
+  this.classList.toggle("active");
 });
 
 // add event in all select items
