@@ -170,3 +170,39 @@ window.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".skills-list").appendChild(skillElement);
   });
 });
+
+// Typing Text Start----------
+const span = document.querySelector(".typing_txt span");
+const textArr = span.getAttribute("data-text").split(", ");
+const maxTextIndex = textArr.length;
+const sPerChar = 0.15;
+const sBetweenWord = 1.5;
+let textIndex = 0;
+
+typing(textIndex, textArr[textIndex]);
+
+function typing(textIndex, text) {
+  let charIndex = 0;
+  const typeInterval = setInterval(() => {
+    span.innerHTML += text[charIndex];
+    if (charIndex++ === text.length - 1) {
+      clearInterval(typeInterval);
+      setTimeout(() => deleting(textIndex, text), sBetweenWord * 700);
+    }
+  }, sPerChar * 300);
+}
+
+function deleting(textIndex, text) {
+  let charIndex = text.length - 1;
+  const typeInterval = setInterval(() => {
+    span.innerHTML = text.substring(0, charIndex--);
+    if (charIndex < 0) {
+      clearInterval(typeInterval);
+      textIndex = (textIndex + 1) % maxTextIndex;
+      setTimeout(
+        () => typing(textIndex, textArr[textIndex]),
+        sBetweenWord * 300
+      );
+    }
+  }, sPerChar * 300);
+}
