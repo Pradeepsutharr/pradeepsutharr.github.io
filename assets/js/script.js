@@ -174,9 +174,10 @@ window.addEventListener("DOMContentLoaded", function () {
   const filterItems = document.querySelectorAll("[data-filter-item]");
   const filterFunc = function (selectedValue) {
     filterItems.forEach((item) => {
+      const categories = item.dataset.category.toLowerCase().split(",");
       if (
         selectedValue === "all" ||
-        selectedValue === item.dataset.category.toLowerCase()
+        categories.includes(selectedValue.toLowerCase())
       ) {
         item.classList.add("active");
       } else {
@@ -233,7 +234,7 @@ window.addEventListener("DOMContentLoaded", function () {
       const index = this.getAttribute("data-index");
       const project = projects[index];
 
-      // modalImage.setAttribute("src", project.image);
+      modalImage.setAttribute("src", project.page);
       modalTitle.innerText = project.name;
       modalDetails.innerText = project.description;
 
