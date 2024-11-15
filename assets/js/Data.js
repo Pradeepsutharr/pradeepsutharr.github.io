@@ -33,7 +33,7 @@ export const projects = [
 
   {
     name: "Intend It",
-    image: "assets/images/projects/intendit.png",
+    image: "assets/images/projects/Intendit.png",
     page: "assets/images/Project_Pages/Page_Intendit.png",
     description: "A clone of the Starbucks website.",
     alt: "Intend It",
